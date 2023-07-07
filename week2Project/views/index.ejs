@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        <%= title %>
+    </title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" id="header">
+                <h3>
+                    <%= title %>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-2" id="leftCol">
+                <h4>Messages</h4>
+                <% entries.forEach(function(entry) { %>
+                    <a href="/entry/<%= entry.id %>">
+                        <%= entry.lastName %> - <%= entry.id %>
+                    </a>
+                    <br>
+                    <% }); %>
+                        <ul id="messageList"></ul>
+            </div>
+
+
+
+            <div class="col-md-8">
+                <form action="/submit" method="post" role="form" id="contactForm">
+
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="4" name="message"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Would you like to receive a newsletter?</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="newsletter" value="weekly"> Weekly
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="newsletter" value="daily"> Daily
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="newsletter" value="none"> None
+                            </label>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <% interests.forEach(function(interest) { %>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="interest" name="interest" value="<%= interest.id %>">
+                                    <%= interest.name %>
+                                </label>
+                            </div>
+                        <% }); %>
+                    </div>
+                    
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="alert alert-dismissable hidden" id="alertArea" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4 class="alert-heading">Alert!</h4>
+                    <div class="alert-message"></div>
+                </div>
+
+
+            </div>
+            <div class="col-md-2" id="rightCol">
+                <img alt="A picture of Jared Sylvia" src="/img/myFace.jpg" class="img-fluid" />
+                <address>
+                    <strong>Jared Sylvia.</strong><br /> Modesto, CA<br /> <a
+                        href="mailto:notactuallymyemail@gmail.com?subject=Hello">Send Email</a><br />
+
+                    <abbr title="Phone">P:</abbr> (888) 555-1212
+                </address>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="footer">
+                Created by Jared Sylvia.
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+    <script>
+        /* Fetch the list of messages from the server
+        fetch('/messages')
+            .then(response => response.json())
+            .then(data => {
+                const messageList = document.getElementById('messageList');
+    
+                // Populate the list with the messages
+                data.forEach(message => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `/${message.id}`;
+                    link.textContent = `${message.lastName} - ${message.id}`;
+    
+                    listItem.appendChild(link);
+                    messageList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching messages:', error)); */
+    </script>
+
+</body>
+
+</html>

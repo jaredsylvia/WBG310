@@ -1,0 +1,23 @@
+#header, #footer {
+    background-color: darkcyan;   
+}
+
+#leftCol, #rightCol {
+    background-color: darkgray;
+}
+
+a:link, a:visited {
+    color: black;
+    background-color: darkcyan;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 30px;
+}
+
+a:hover, a:active {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
