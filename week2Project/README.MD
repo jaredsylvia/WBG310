@@ -8,6 +8,7 @@ npm install
 ```
 
 ## Usage
+Make a directory named "data" that'll store a sqlite database.
 ```bash
 node app.js
 ```
