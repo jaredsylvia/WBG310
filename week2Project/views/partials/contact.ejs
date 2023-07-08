@@ -1,0 +1,59 @@
+<form action="/submit" method="post" role="form" id="contactForm">
+
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName">
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" name="phone">
+    </div>
+
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" rows="4" name="message"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Would you like to receive a newsletter?</label>
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+                <input type="radio" name="newsletter" id="weekly" value="weekly"> Weekly
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="newsletter" id="daily" value="daily"> Daily
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="newsletter" id="none" value="none"> None
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Interests</label>
+        <div class="btn-group" data-toggle="buttons">
+            <% interests.forEach(function(interest) { %>
+                <label class="btn btn-primary">
+                    <input type="checkbox" id="<%= interest.id %>" name="interest"
+                        value="<%= interest.id %>">
+                    <%= interest.name %>
+                </label>
+                <% }); %>
+        </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

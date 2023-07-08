@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row header" id="header">
+            <div class="col-md-12">
+                <h3>
+                    <%- include('../partials/header'); %>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-2 leftCol" id="leftCol">
+                <%- include('../partials/leftCol'); %>
+            </div>
+
+
+
+            <div class="col-md-8" id="body">
+                <% try { %>
+                    <%- include(`../partials/${page}`); %>
+                <% } catch (error) { %>
+                    
+                    <h4>Error: <%= page %> Not Found</h4>
+                <% } %>
+                    
+                
+                <div class="alert alert-dismissable hidden" id="alertArea" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4 class="alert-heading">Alert!</h4>
+                    <div class="alert-message"></div>
+                </div>
+
+
+            </div>
+            <div class="col-md-2 rightCol" id="rightCol">
+                <%- include('../partials/rightCol'); %>
+            </div>
+        </div>
+        <div class="row footer" id="footer">
+            <div class="col-md-12">
+                <%- include('../partials/footer'); %>
+            </div>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+
+
+</body>
+
+</html>

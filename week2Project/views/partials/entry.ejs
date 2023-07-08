@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Details</h4>
+    </div>
+    <div class="panel-body">
+        <ul>
+            <li>First Name: <%= entry.firstName %>
+            </li>
+            <li>Last Name: <%= entry.lastName %>
+            </li>
+            <li>Email: <%= entry.email %>
+            </li>
+            <li>Phone: <%= entry.phone %>
+            </li>
+            <li>Newsletter: <%= entry.newsletter %>
+            </li>
+            <li>Message: <%= entry.message %>
+            </li>
+            <li>
+                Interests:
+                <% interests.forEach(function(interest, index) { %>
+                    <%= interest.name %>
+                        <%= index !==interests.length - 1 ? ',' : '' %>
+                            <% }); %>
+            </li>
+
+        </ul>
+    </div>
+</div>

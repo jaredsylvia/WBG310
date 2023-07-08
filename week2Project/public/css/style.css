@@ -1,8 +1,33 @@
-#header, #footer {
-    background-color: darkcyan;   
+.header, .footer {
+    background-color: darkcyan;
+    
 }
 
-#leftCol, #rightCol {
+
+
+
+.header h2 {
+    font-size: 80%;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+}
+
+.header a:link, a:visited {
+    font-size: 60%;
+    display: inline-block;
+}
+
+.header a:hover, a:active {
+    font-size: 60%;
+    display: inline-block;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.leftCol, .rightCol {
     background-color: darkgray;
 }
 

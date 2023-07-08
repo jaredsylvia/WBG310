@@ -1,0 +1,8 @@
+<h4>Messages</h4>
+                <% entries.forEach(function(entry) { %>
+                    <a href="/entry/<%= entry.id %>">
+                        <%= entry.lastName %> - <%= entry.id %>
+                    </a>
+                    <br>
+                    <% }); %>
+                        <ul id="messageList"></ul>
