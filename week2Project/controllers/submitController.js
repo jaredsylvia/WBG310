@@ -15,13 +15,12 @@ function isValidPhoneNumber(phone) {
 }
 
 module.exports = function (db) {
-    
-    const formDataModel = new FormData(db);
-    
+  const formDataModel = new FormData(db);
+
   // Handle POST request to /submit
   router.post('/', async (req, res) => {
     const { firstName, lastName, email, phone, newsletter, message, interest } = req.body;
-    
+
     // Perform server-side validation
     let validationErrors = [];
 
@@ -62,9 +61,7 @@ module.exports = function (db) {
         };
 
         // Insert the form data using the formDataModel
-        
         const messageId = await formDataModel.insert(data);
-        
         res.status(200).send('Form submitted successfully');
       } catch (err) {
         console.error('Error inserting form data:', err);

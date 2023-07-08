@@ -28,15 +28,15 @@
     <div class="form-group">
         <label>Would you like to receive a newsletter?</label>
         <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary">
-                <input type="radio" name="newsletter" id="weekly" value="weekly"> Weekly
-            </label>
-            <label class="btn btn-primary">
-                <input type="radio" name="newsletter" id="daily" value="daily"> Daily
-            </label>
-            <label class="btn btn-primary">
-                <input type="radio" name="newsletter" id="none" value="none"> None
-            </label>
+            
+                <input type="radio" class="btn-check" name="newsletter" id="weekly" value="weekly"> 
+                <label class="btn btn-secondary" for="weekly">Weekly</label>
+            
+                <input type="radio" class="btn-check" name="newsletter" id="daily" value="daily"> 
+                <label class="btn btn-secondary" for="daily">Daily</label>
+            
+                <input type="radio" class="btn-check" name="newsletter" id="none" value="none"> 
+                <label class="btn btn-secondary" for="none">None</label>
         </div>
     </div>
 
@@ -44,10 +44,10 @@
         <label>Interests</label>
         <div class="btn-group" data-toggle="buttons">
             <% interests.forEach(function(interest) { %>
-                <label class="btn btn-primary">
-                    <input type="checkbox" id="<%= interest.id %>" name="interest"
+                
+                    <input type="checkbox" class="btn-check" autocomplete="off" id="<%= interest.id %>" name="interest"
                         value="<%= interest.id %>">
-                    <%= interest.name %>
+                        <label class="btn btn-secondary" for="<%= interest.id %>"><%= interest.name %></label>
                 </label>
                 <% }); %>
         </div>
@@ -55,5 +55,5 @@
 
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" id="contactSubmit">Submit</button>
 </form>

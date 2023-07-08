@@ -32,50 +32,74 @@ class FormData {
       });
     }
   
-    insert(data) {
-        return new Promise((resolve, reject) => {
-          const { firstName, lastName, email, phone, newsletter, message, interests } = data;
+    async insert(data) {
+        const { firstName, lastName, email, phone, newsletter, message, interests } = data;
     
-          const insertQuery = 'INSERT INTO formData (firstName, lastName, email, phone, newsletter, message) VALUES (?, ?, ?, ?, ?, ?)';
-          const insertValues = [firstName, lastName, email, phone, newsletter, message];
+        const insertFormDataQuery = 'INSERT INTO formData (firstName, lastName, email, phone, newsletter, message) VALUES (?, ?, ?, ?, ?, ?)';
+        const insertFormDataValues = [firstName, lastName, email, phone, newsletter, message];
     
-          this.db.run(insertQuery, insertValues, function (err) {
-            if (err) {
-              console.error('Error inserting entry into the database:', err);
-              reject(err);
-            } else {
-              const messageId = this.lastID;
+        try {
+          await this.db.run('BEGIN TRANSACTION');
     
-              if (interests && interests.length > 0) {
-                const insertInterestsQuery = 'INSERT INTO message_interests (message_id, interest_id) VALUES (?, ?)';
-                const insertInterestsPromises = interests.map(interestId => {
-                  const insertInterestsValues = [messageId, interestId];
-                  return new Promise((resolve, reject) => {
-                    this.db.run(insertInterestsQuery, insertInterestsValues, (err) => {
-                      if (err) {
-                        console.error('Error inserting interests into the database:', err);
-                        reject(err);
-                      } else {
-                        resolve();
-                      }
-                    });
-                  });
+          const insertFormDataResult = await new Promise((resolve, reject) => {
+            this.db.run(insertFormDataQuery, insertFormDataValues, function (err) {
+              if (err) {
+                console.error('Error inserting entry into the database:', err);
+                this.db.run('ROLLBACK', rollbackErr => {
+                  if (rollbackErr) {
+                    console.error('Error rolling back transaction:', rollbackErr);
+                  }
+                  reject(err);
                 });
-    
-                Promise.all(insertInterestsPromises)
-                  .then(() => {
-                    resolve(messageId);
-                  })
-                  .catch(err => {
-                    reject(err);
-                  });
               } else {
-                resolve(messageId);
+                resolve(this);
               }
+            });
+          });
+    
+          const messageId = insertFormDataResult.lastID;
+          console.log(messageId);
+    
+          if (interests && interests.length > 0) {
+            const insertInterestsQuery = 'INSERT INTO message_interests (message_id, interest_id) VALUES (?, ?)';
+    
+            for (const interestId of interests) {
+              await new Promise((resolve, reject) => {
+                this.db.run(insertInterestsQuery, [messageId, interestId], function (err) {
+                  if (err) {
+                    console.error('Error inserting interests into the database:', err);
+                    this.db.run('ROLLBACK', rollbackErr => {
+                      if (rollbackErr) {
+                        console.error('Error rolling back transaction:', rollbackErr);
+                      }
+                      reject(err);
+                    });
+                  } else {
+                    resolve();
+                  }
+                });
+              });
             }
-          }.bind(this)); // Bind the context of the callback function to ensure 'this' refers to the db object
-        });
+          }
+    
+          await this.db.run('COMMIT');
+          return messageId;
+        } catch (err) {
+          await this.db.run('ROLLBACK');
+          console.error('Error inserting form data:', err);
+          throw err;
+        }
       }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     
     
       
