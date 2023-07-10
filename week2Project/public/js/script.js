@@ -1,6 +1,6 @@
 // Display alerts
 function displayMessage(message, alertLevel) {
-    
+    $('#alertSpace').find('.alert').remove();
     let wrapper = document.createElement('div');
     wrapper.innerHTML = [
         `<div class="alert alert-${alertLevel} alert-dismissible fade show" id="${alertLevel}Alert" role="alert">`,
