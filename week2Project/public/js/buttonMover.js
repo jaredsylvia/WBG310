@@ -45,7 +45,7 @@ $(document).ready(function() {
       });
   
       $button.click(function() {
-        showModal();
+        showModal("Congratulations!", "You clicked a button!");
       });
     }
   
@@ -87,7 +87,4 @@ $(document).ready(function() {
     
   });
   
-  // show modal
-  function showModal() {
-    $('#congratsModal').modal('show');
-  }
+ 
