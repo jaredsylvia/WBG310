@@ -1,0 +1,18 @@
+#exampleBox {
+    background-color: lightcoral;
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 5px;
+    border-radius: 10px;  
+    
+}
+
+#exampleBox p {
+  margin: 5px;
+  
+}
+
+
+
+  

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My HTML Page</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </link>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>jQuery example page.</h1>
+    <p>
+        <a href="#" id="fadeOut" class="btn btn-primary">Fade Out</a>
+        <a href="#" id="fadeIn" class="btn btn-primary">Fade In</a><br>
+        <label for="fadeSpeed">Fade Speed:</label>
+        <input type="number" id="fadeSpeed" min="1" max="5"><br>
+        <a href="#" id="slideUp" class="btn btn-primary">Slide Up</a>
+        <a href="#" id="slideDown" class="btn btn-primary">Slide Down</a><br>
+        <label for="slideSpeed">Slide Speed:</label>
+        <input type="number" id="slideSpeed" min="1" max="5"><br>
+        <a href="#" id="hide" class="btn btn-primary">Hide</a>
+        <a href="#" id="show" class="btn btn-primary">Show</a><br>
+        <label for="titleSpeed">Hide/Show Speed:</label>
+        <input type="radio" id="titleSpeedFast" name="titleSpeed" value="fast" checked>
+        <label for="titleSpeedFast">Fast</label>
+        <input type="radio" id="titleSpeedSlow" name="titleSpeed" value="slow">
+        <label for="titleSpeedSlow">Slow</label><br>
+        <a href="#" id="toggle" class="btn btn-primary">Toggle</a><br>
+        <label for="toggleSpeed">Toggle Speed:</label>
+        <input type="radio" id="toggleSpeedFast" name="toggleSpeed" value="fast" checked>
+        <label for="toggleSpeedFast">Fast</label>
+        <input type="radio" id="toggleSpeedSlow" name="toggleSpeed" value="slow">
+        <label for="toggleSpeedSlow">Slow</label>
+    </p>
+    
+    <div id="exampleBox">
+        <p>Example box for demonstration purposes only.<br>
+            Example performers are trained professionals.<br>
+            But you can try this at home.
+        </p>
+    </div>
+
+    <a href="#" id="randomColor" class="btn btn-primary">Random Color</a>
+</body>
+
+</html>
