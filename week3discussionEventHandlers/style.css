@@ -1,5 +1,9 @@
 body {
     text-align: center;
+    transition: transform .2s ease;
+    background: slategray;
+    color: lightgrey;
+    font-size: 16px;
 }
 
 ul {
@@ -8,17 +12,22 @@ ul {
 }
 
 li {
-    background-color: #333;
-    color: #fff;
+    background-color: darkslategrey;
+    color: lightgrey;
     padding: 10px 20px;
     border-radius: 10px;
     margin: 10px;
     display: inline-block;
+    font-size: 14px;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+}
+
+h1 {
+    font-size: 24px;
 }
 
 .lorem-div {
@@ -30,3 +39,21 @@ a {
     max-width: 400px;
     text-align: left;
 }
+
+/* For high contrast mode */
+body.highContrast {
+    background-color: black;
+    color: white;
+  }
+    
+  body.highContrast li {
+    background-color: rgb(255, 217, 0);
+    color: rgb(247, 0, 255);
+  }
+   
+  
+/* For font */
+
+body.verdanaFont {
+    font-family: Verdana, sans-serif;
+  }
