@@ -2,7 +2,7 @@ $(document).ready(function () {
     let youtubeClicks = 0; // Variable to track the number of clicks for the YouTube link
     let maxYoutubeClicks = 5; // Number of clicks to see the page after the alert
     let currentScale = 1; // Starting scale
-    let currentFontSize = 16; // Starting font size in pixels
+
 
 
     // Function to handle the action for the Google link
@@ -71,9 +71,9 @@ $(document).ready(function () {
         $('*').each(function () {
             let currentFontSize = parseInt($(this).css('font-size'));
             $(this).css('font-size', (currentFontSize + 2) + 'px');
-            
+
         });
-        
+
     }
 
     // Function to decrease font size
@@ -95,6 +95,28 @@ $(document).ready(function () {
         event.preventDefault();
         $('body').toggleClass('verdanaFont');
     }
+
+    // Function to zoom in on the target element
+    function zoomIn(event) {
+        event.preventDefault();
+        let targetElement = $(event.currentTarget);
+        targetElement.css({
+            'transform': 'scale(1.5)',
+            'font-size': '1.5em'
+        });
+    }
+
+    // Function to zoom out and return to normal
+    function zoomOut(event) {
+        event.preventDefault();
+        let targetElement = $(event.currentTarget);
+        targetElement.css({
+            'transform': '',
+            'font-size': ''
+        });
+    }
+
+
 
     // Get all the link elements
     let googleLink = $('#google-link');
@@ -123,4 +145,8 @@ $(document).ready(function () {
     sizeDownButton.on('click', decreaseFontSize);
     contrastToggleLink.on('click', contrastToggle);
     fontToggleLink.on('click', fontToggle);
+
+    //Add event listener for li elements
+    $('li').on('mouseover', zoomIn);
+    $('li').on('mouseleave', zoomOut);
 });
