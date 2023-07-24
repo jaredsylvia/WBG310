@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+    transition: transform .2s ease;
+    background: slategray;
+    color: lightgrey;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: darkslategrey;
+    color: lightgrey;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.country {
+    background-color: darkslategrey;
+    color: lightgrey;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    display: inline-block;
+    font-size: 14px;
+}
